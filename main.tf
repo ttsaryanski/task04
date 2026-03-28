@@ -59,8 +59,8 @@ resource "azurerm_mssql_server" "amssqls" {
   resource_group_name          = azurerm_resource_group.arg.name
   location                     = azurerm_resource_group.arg.location
   version                      = "12.0"
-  administrator_login          = TF_VAR_sql_admin_username
-  administrator_login_password = TF_VAR_sql_admin_password
+  administrator_login          = var.sql_admin_username
+  administrator_login_password = var.sql_admin_password
 }
 
 resource "azurerm_mssql_database" "amssqldb" {

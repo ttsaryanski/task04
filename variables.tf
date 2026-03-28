@@ -37,3 +37,12 @@ variable "github_repo_url" {
   type        = string
   description = "URL of the GitHub repository to link with App Service"
 }
+
+variable "sql_admin_username" {
+  type = string
+}
+
+variable "sql_admin_password" {
+  type      = string
+  sensitive = true
+}
