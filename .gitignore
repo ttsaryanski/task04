@@ -261,6 +261,7 @@ json_key.json
 any.md
 .VSCodeCounter
 test_rest.http
+*.txt
 
 ############################
 # .net
