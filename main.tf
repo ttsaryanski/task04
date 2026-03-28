@@ -13,7 +13,7 @@ terraform {
 
 provider "azurerm" {
   features {}
-  subscription_id = "5e30cc49-5685-41ff-a372-127e3ef1c10f"
+  subscription_id = var.azure_subscription_id
 }
 
 resource "random_integer" "ri" {

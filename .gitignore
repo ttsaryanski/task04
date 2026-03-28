@@ -256,6 +256,7 @@ help_bash.md
 help_cors.md
 help_docker.md
 gcp_json_key.json
+json_key.json
 .dockerignore
 any.md
 .VSCodeCounter
