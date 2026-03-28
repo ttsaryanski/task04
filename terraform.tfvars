@@ -1,0 +1,8 @@
+resource_group_name     = "TaskBoard-rg"
+resource_group_location = "Poland Central"
+app_service_plan_name   = "task-board-app-service-plan"
+app_service_name        = "task-board-app-service"
+sql_server_name         = "task-board-mssql-server"
+sql_database_name       = "task-board-mssql-db"
+firewall_rule_name      = "Allow-all-ips"
+github_repo_url         = "https://github.com/ttsaryanski/task03.1"
