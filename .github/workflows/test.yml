@@ -8,6 +8,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      TF_VAR_sql_admin_username: ${{ secrets.TF_VAR_sql_admin_username }}
+      TF_VAR_sql_admin_password: ${{ secrets.TF_VAR_sql_admin_password }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
