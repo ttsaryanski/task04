@@ -15,7 +15,7 @@ jobs:
         id: check
         run: |
           RESULT=$(gh run list \
-            --workflow="Bootstrap" \
+            --workflow="Terraform Backend" \
             --status=success \
             --limit=1 \
             --json conclusion \
