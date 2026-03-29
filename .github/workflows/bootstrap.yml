@@ -20,7 +20,7 @@ jobs:
             --location polandcentral
     
           az storage account create \
-            --name taskboard-terraform-storage-account \
+            --name taskboardterraformstorageaccount \
             --resource-group taskboard-terraform-stage-rg \
             --location polandcentral \
             --sku Standard_LRS \
