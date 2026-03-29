@@ -8,21 +8,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Create Terraform backend
-        uses: azure/CLI@v1
+      - name: Login to Azure
+        uses: azure/login@v1
         with:
-          inlineScript: |
-            az group create \
-              --name taskboard-terraform-stage-rg \
-              --location polandcentral
-      
-            az storage account create \
-              --name taskboard-terraform-storage-account \
-              --resource-group taskboard-terraform-stage-rg \
-              --location polandcentral
-              --sku Standard_LRS \
-              --kind StorageV2 \
-      
-            az storage container create \
-              --name taskboard-terraform-state-container \
-              --account-name taskboard-terraform-storage-account
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Create Terraform backend
+        run: |
+          az group create \
+            --name taskboard-terraform-stage-rg \
+            --location polandcentral
+    
+          az storage account create \
+            --name taskboard-terraform-storage-account \
+            --resource-group taskboard-terraform-stage-rg \
+            --location polandcentral \
+            --sku Standard_LRS \
+            --kind StorageV2
+    
+          az storage container create \
+            --name taskboard-terraform-state-container \
+            --account-name taskboard-terraform-storage-account
