@@ -1,4 +1,4 @@
-name: Terraform backend
+name: Terraform Backend
 
 on:
   workflow_dispatch:
@@ -28,4 +28,5 @@ jobs:
     
           az storage container create \
             --name taskboard-terraform-state-container \
-            --account-name taskboard-terraform-storage-account
+            --account-name taskboardstorageaccount
+            --auth-mode login
