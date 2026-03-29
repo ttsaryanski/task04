@@ -11,6 +11,9 @@ jobs:
       allowed: ${{ steps.check.outputs.allowed }}
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
       - name: Check if Bootstrap succeeded
         id: check
         run: |
