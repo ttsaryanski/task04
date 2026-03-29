@@ -29,4 +29,4 @@ jobs:
           az storage container create \
             --name taskboard-terraform-state-container \
             --account-name taskboardstorageaccount
-            --authentication-type login
+            --auth-mode login
