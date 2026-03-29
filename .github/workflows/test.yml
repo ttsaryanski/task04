@@ -5,7 +5,35 @@ on:
     branches: [ "main" ]
 
 jobs:
+  check-bootstrap:
+    runs-on: ubuntu-latest
+    outputs:
+      allowed: ${{ steps.check.outputs.allowed }}
+
+    steps:
+      - name: Check if Bootstrap succeeded
+        id: check
+        run: |
+          RESULT=$(gh run list \
+            --workflow="Bootstrap" \
+            --status=success \
+            --limit=1 \
+            --json conclusion \
+            --jq '.[0].conclusion')
+
+          echo "Result: $RESULT"
+
+          if [ "$RESULT" = "success" ]; then
+            echo "allowed=true" >> $GITHUB_OUTPUT
+          else
+            echo "allowed=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   test:
+    needs: check-bootstrap
+    if: needs.check-bootstrap.outputs.allowed == 'true'
     runs-on: ubuntu-latest
 
     env:

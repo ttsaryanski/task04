@@ -1,10 +1,14 @@
 name: Terraform Apply
 
 on:
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["Terraform Test"]
+    types:
+      - completed
 
 jobs:
   plan:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     env:
